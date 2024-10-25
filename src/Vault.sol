@@ -55,14 +55,18 @@ contract Vault is OApp {
     // ====================
 
     function withdraw() public payable {
-        // update user's balance
-        uint256 withdrawalAmount = msg.value;
-        userCollateral[msg.sender] -= msg.value;
+        if (userCollateral[msg.sender] >= msg.value) {
+            // update user's balance
+            uint256 withdrawalAmount = msg.value;
+            userCollateral[msg.sender] -= msg.value;
 
-        // transfer ETH back to user
-        msg.sender.call{value: withdrawalAmount}("");
+            // transfer ETH back to user
+            msg.sender.call{value: withdrawalAmount}("");
 
-        emit EthCollateralWithdrawn(msg.sender, withdrawalAmount);
+            emit EthCollateralWithdrawn(msg.sender, withdrawalAmount);
+        } else {
+            revert Error__NoCollateralSupplied();
+        }
     }
 
     // ===============
