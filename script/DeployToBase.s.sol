@@ -28,11 +28,14 @@ contract DeployToBase is Script {
 
         // deploy Vault OAPP contract
         Vault baseOapp =
-            new Vault{salt: "falcon"}(vm.envAddress(BASE_LZ_ENDPOINT), vm.envAddress(DEPLOYER_PUBLIC_ADDRESS));
+            new Vault{salt: "albatross"}(vm.envAddress(BASE_LZ_ENDPOINT), vm.envAddress(DEPLOYER_PUBLIC_ADDRESS));
         console2.log("Vault OAPP Address: ", address(baseOapp));
 
+        // transfer ownership to deployer
+        // baseOapp.transferOwnership(vm.envAddress(DEPLOYER_PUBLIC_ADDRESS));
+
         // deploy Reward Token OFT contract
-        Token baseOft = new Token{salt: "falcon"}(
+        Token baseOft = new Token{salt: "albatross"}(
             "Reward Token",
             "ReOFT",
             vm.envAddress(BASE_LZ_ENDPOINT),
@@ -40,6 +43,9 @@ contract DeployToBase is Script {
             vm.envAddress(DEPLOYER_PUBLIC_ADDRESS)
         );
         console2.log("OFT Reward Token Address: ", address(baseOft));
+
+        // transfer ownership to deployer
+        // baseOft.transferOwnership(vm.envAddress(DEPLOYER_PUBLIC_ADDRESS));
 
         // set the Token address on the Vault Oapp
         baseOapp.setToken(address(baseOft));

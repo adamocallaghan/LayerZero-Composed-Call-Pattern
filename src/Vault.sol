@@ -2,6 +2,7 @@
 pragma solidity ^0.8.20;
 
 import {OApp, Origin, MessagingFee, MessagingReceipt} from "@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/OApp.sol";
+import {Ownable} from "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 
 contract Vault is OApp {
     // ====================
@@ -37,7 +38,9 @@ contract Vault is OApp {
     // === CONSTRUCTOR ===
     // ===================
 
-    constructor(address _endpoint, address _owner) OApp(_endpoint, _owner) {}
+    constructor(address _endpoint, address _owner) OApp(_endpoint, _owner) {
+        _transferOwnership(_owner);
+    }
 
     // ================================
     // === SUPPLY ETH AS COLLATERAL ===

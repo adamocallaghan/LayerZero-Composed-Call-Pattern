@@ -11,7 +11,9 @@ contract Token is OFT, ILayerZeroComposer {
 
     constructor(string memory oftName, string memory oftSymbol, address lzEndpoint, address vault, address _owner)
         OFT(oftName, oftSymbol, lzEndpoint, _owner)
-    {}
+    {
+        _transferOwnership(_owner);
+    }
 
     function lzCompose(address _oApp, bytes32 _guid, bytes calldata _message, address, bytes calldata)
         external

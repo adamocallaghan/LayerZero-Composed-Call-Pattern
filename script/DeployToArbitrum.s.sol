@@ -11,7 +11,7 @@ contract DeployToArbitrum is Script {
         // ===================
 
         uint256 deployerPrivateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
-        string memory ARBITRUM_LZ_ENDPOINT = "BASE_SEPOLIA_LZ_ENDPOINT";
+        string memory ARBITRUM_LZ_ENDPOINT = "ARBITRUM_SEPOLIA_LZ_ENDPOINT";
         string memory DEPLOYER_PUBLIC_ADDRESS = "DEPLOYER_PUBLIC_ADDRESS";
 
         // ============================
@@ -22,17 +22,17 @@ contract DeployToArbitrum is Script {
         console2.log("########## Deploying to Arbitrum ##########");
         console2.log("###########################################");
 
-        vm.createSelectFork("base");
+        vm.createSelectFork("arbitrum");
 
         vm.startBroadcast(deployerPrivateKey);
 
         // deploy Vault OAPP contract
         Vault arbOapp =
-            new Vault{salt: "falcon"}(vm.envAddress(ARBITRUM_LZ_ENDPOINT), vm.envAddress(DEPLOYER_PUBLIC_ADDRESS));
+            new Vault{salt: "albatross"}(vm.envAddress(ARBITRUM_LZ_ENDPOINT), vm.envAddress(DEPLOYER_PUBLIC_ADDRESS));
         console2.log("Vault OAPP Address: ", address(arbOapp));
 
         // deploy Reward Token OFT contract
-        Token arbOft = new Token{salt: "falcon"}(
+        Token arbOft = new Token{salt: "albatross"}(
             "Reward Token",
             "ReOFT",
             vm.envAddress(ARBITRUM_LZ_ENDPOINT),

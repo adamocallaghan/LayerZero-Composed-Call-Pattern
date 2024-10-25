@@ -21,11 +21,11 @@ contract SetPeers is Script {
 
         uint256 deployerPrivateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
         // Oapp Bytes32 format Address (Same address all chains)
-        bytes32 OAPP_BYTES32 = 0x00000000000000000000000047861D458fe99BfC304FCeF3eD95bb6b29E2AB93;
+        bytes32 OAPP_BYTES32 = 0x0000000000000000000000009C92F11Db296896C6D5E1bBBF3A3f44D52ea51AD;
         // Oapp Address (same address all chains)
         address OAPP_ADDRESS = vm.envAddress("OAPP_ADDRESS");
         // Oft Bytes32 format Address (same address all chains)
-        bytes32 OFT_BYTES32 = 0x000000000000000000000000178FFc3586c8FBE0Dc2788E29730D16bB3b7E7Bf;
+        bytes32 OFT_BYTES32 = 0x00000000000000000000000052983550dD71De0670751F29b1306B64CF9e1f90;
         // Oapp Address (same address all chains)
         address OFT_ADDRESS = vm.envAddress("OFT_ADDRESS");
 
