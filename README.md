@@ -14,6 +14,8 @@ Contains:
 - **test**:
   - OptionsBuilder.t.sol: the LayerZero OptionsBuilder used in a test file to easily see our options bytes arrays
 
+![alt text](https://github.com/adamocallaghan/LayerZero-Composed-Call-Pattern/blob/main/images/LayerZero_Composed_Call_Pattern.png?raw=true)
+
 ## Usage
 
 ### Download
