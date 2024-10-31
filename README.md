@@ -1,66 +1,46 @@
-## Foundry
+## LayerZero Composed Call Pattern
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**An example repo on how to implement LayerZero composed (A-B1-B2) calls, with deployment and wire-up scripts.**
 
-Foundry consists of:
+Contains:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+- **script**:
+  - DeployToArbitrum.s.sol: a script for deploying both the Token and Vault contracts to Arbitrum Sepolia testnet
+  - DeployToBase.s.sol: a script for deploying both the Token and Vault contracts to Base Sepolia testnet
+  - SetPeers.s.sol: a script for "wiring up" (aka "setting peers") on our contracts
+- **src**:
+  - Token.sol: our OFT token
+  - Vault.sol: our OApp contract
+- **test**:
+  - OptionsBuilder.t.sol: the LayerZero OptionsBuilder used in a test file to easily see our options bytes arrays
 
 ## Usage
 
-### Build
+### Download
+
+Clone the repo to your local machine, and run...
 
 ```shell
-$ forge build
+$ forge install
 ```
 
-### Test
+### .env
+
+Use .example.env to create a .env file...
+
+- add in your own RPC URLs
+- add in your block explorer API keys
+- add in your Deployer wallet private and public keys
+
+If you are using Base Sepolia and Arbitrum Sepolia then the LayerZero endpoints and IDs are already correct.
+
+### Makefile
+
+The Makefile commands are all currently based upon you having your "deployer" wallet set in foundry.
+You can do this by running...
 
 ```shell
-$ forge test
+$ cast wallet import deployer --interactive
 ```
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+...and pasting in your private key
