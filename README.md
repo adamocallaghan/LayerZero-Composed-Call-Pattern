@@ -7,7 +7,7 @@ Contains:
 - **script**:
   - DeployToArbitrum.s.sol: a script for deploying both the Token and Vault contracts to Arbitrum Sepolia testnet
   - DeployToBase.s.sol: a script for deploying both the Token and Vault contracts to Base Sepolia testnet
-  - SetPeers.s.sol: a script for "wiring up" (aka "setting peers") on our contracts
+  - SetPeers.s.sol: a script for "wiring up" (aka "setting peers") on our contracts so as that they are connected via the LayerZero network
 - **src**:
   - Token.sol: our OFT token
   - Vault.sol: our OApp contract
@@ -43,4 +43,6 @@ You can do this by running...
 $ cast wallet import deployer --interactive
 ```
 
-...and pasting in your private key
+...and pasting in your private key. You will be asked for a password, which you can then enter after running forge/cast commands.
+
+The Makefile is structured in order of what commands you need to run, but please note the comments, as there are some things _hardcoded_ into the scripts that will have to change for your wallet, or if **re**-deploying the contracts.
