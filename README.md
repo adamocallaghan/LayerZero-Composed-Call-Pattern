@@ -44,5 +44,6 @@ $ cast wallet import deployer --interactive
 ```
 
 ...and pasting in your private key. You will be asked for a password, which you can then enter after running forge/cast commands.
+(You will need to have some test ETH for both Base Sepolia and Arb Sepolia in your _deployer_ wallet! 😉)
 
 The Makefile is structured in order of what commands you need to run, but please note the Makefile comments, as there are some things _hardcoded_ into the scripts that will have to change for **your** wallet, or if **re**-deploying the contracts.
